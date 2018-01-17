@@ -577,14 +577,14 @@
                     <div class="container d-flex">
                         <div class="wrapper-form m-auto d-flex flex-column" id="application">
                             <span class="wrapper-form-title">запишись на обучение СПА-Массажа со скидкой</span>
-                            <form action="mail.php" class="d-flex flex-column" method="POST">
+                            <form class="d-flex flex-column" id='form'>
                                 <div class="form-send form-name d-flex align-items-center">
-                                    <input type="text" class="margin-input" name="user_name" placeholder="Имя">
-                                    <input type="text" name="second-name"  placeholder="Фамилия">
+                                    <input type="text" class="margin-input" name="name" placeholder="Имя">
+                                    <input type="text" name="second_name"  placeholder="Фамилия">
                                 </div>
                                 <div class="form-send d-flex align-items-center m-auto">
-                                    <input type="number" class="input-number" disabled placeholder="+38" name="user_phone">
-                                    <input type="tel" class="bg-white input-tel" name="user_phone">
+                                    <input type="number" class="input-number" disabled placeholder="+38">
+                                    <input type="tel" class="bg-white input-tel" name="phone">
                                     <button href="#leave-number" type="submit" class="btn btn-send text-white">Отправить</button>
                                 </div>
                             </form>
