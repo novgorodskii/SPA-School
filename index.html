@@ -10,6 +10,9 @@
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic" rel="stylesheet">
 
+    <!-- slick-nav -->
+    <link rel="stylesheet" href="css/slicknav.css">
+
     <!-- font-awesome -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
 
@@ -24,35 +27,26 @@
 
     <!-- custom style -->
     <link rel="stylesheet" href="css/style.css">
+    
 
   </head>
   <body>
     <!-- HEADER START -->
     <header class="header">
-        <section class="header-top">
+        <section class="header-top d-flex">
             <div class="container-fluid d-flex">
                 <div class="logo mr-auto">
                     <img src="img/logo.png" alt="Logo">
-                </div>
-                <ul class="contact-header">
-                    <li>Одесса, БЦ Планета , ул. Балковская 120/1, кабинет № 620</li>
-                    <li>+38 (048) 737-31-47</li>
-                    <li>+38 (063) 897-01-87</li>
-                    <li><i class="fa fa-phone"></i><a href="">Заказать звонок</a></li>
-                </ul>   
+                </div>  
             </div>
-        </section>
-        <section class="header-bottom"> 
-            <div class="container">
-                <ul class="nav-header d-flex align-items-center">
-                    <li class="active"><a href="#course-price">ГЛАВНАЯ</a></li>
-                    <li><a href="#price-catalog">ЦЕНЫ</a></li>
-                    <li><a href="#why-choose-us">ПРЕИМУЩЕСТВА</a></li>
-                    <li><a href="#feedback">ОТЗЫВЫ</a></li>
-                    <li><a href="#application">ОСТАВИТЬ ЗАЯВКУ </a></li>
-                    <li><a href="#">КОНТАКТЫ</a></li>
-                </ul>
-            </div>
+            <ul class="nav-header d-flex align-items-center m-auto" id='menu'>
+                <li class="active"><a href="#course-price">ГЛАВНАЯ</a></li>
+                <li><a href="#price-catalog">ЦЕНЫ</a></li>
+                <li><a href="#why-choose-us">ПРЕИМУЩЕСТВА</a></li>
+                <li><a href="#feedback">ОТЗЫВЫ</a></li>
+                <li><a href="#application">ОСТАВИТЬ ЗАЯВКУ </a></li>
+                <li><a href="#contact">КОНТАКТЫ</a></li>
+            </ul>
         </section>
     </header>
     <!-- HEADER END -->
@@ -68,10 +62,10 @@
                             <h1>Курсы SPA-массажиста для<br> начинающих</h1>
                         </div>
                         <fieldset class="ml-auto mr-auto">
+                            <legend>цена курса</legend>
                             <p>2800 грн</p>
-                            <legend>цена курса</legend> 
                         </fieldset>
-                        <a href="#" class="btn btn-price m-auto">Записаться на курс</a>
+                        <a href="#leave-number" class="btn btn-price m-auto">Записаться на курс</a>
                         <p>помогаем с дальнейшим трудоустройством, оставьте заявку мы вас проконсультруем</p>
                     </div>
                 </div>
@@ -84,8 +78,8 @@
                 <div class="inner-content">
                     <div class="container">
                         <span class="title-why-choose text-center">Почему выбирают нас</span>
-                        <div class="row d-flex flex-row">
-                            <div class="col-md-4 text-center">
+                        <div class="row d-flex">
+                            <div class="col-md-4 col-xs-12 text-center">
                                 <div class="item-why-choose d-flex flex-column align-items-center">
                                     <div class="img-item-why">
                                         <img src="img/item-why-1.png" alt="">
@@ -101,7 +95,7 @@
                                 </div>
                             </div>
                             <!-- / col-md-4 -->
-                            <div class="col-md-4 text-center">
+                            <div class="col-lg-4 col-xs-12 text-center">
                                 <div class="item-why-choose d-flex flex-column align-items-center">
                                     <div class="img-item-why">
                                         <img src="img/item-why-2.png" alt="">
@@ -118,7 +112,7 @@
                                 </div>
                             </div>
                             <!-- / col-md-4 -->
-                            <div class="col-md-4 text-center">
+                            <div class="col-lg-4 col-xs-12 text-center">
                                 <div class="item-why-choose d-flex flex-column align-items-center">
                                     <div class="img-item-why">
                                         <img src="img/item-why-3.png" alt="">
@@ -267,11 +261,13 @@
                     <p>4200 грн</p>
                     <span>2800 грн</span>
                 </div>
-                <form action="" class="d-flex">
+                <form action="php/leave.php" class="d-flex" method="POST">
                     <div class="form-send d-flex align-items-center m-auto">
-                        <input type="number" class="input-number" disabled placeholder="+38">
-                        <input type="tel" class="bg-white input-tel">
-                        <a class="btn btn-send text-white">Отправить</a>
+                        <div class="d-flex align-items-center form-send-media">
+                            <input type="number" class="input-number" disabled placeholder="+38">
+                            <input type="tel" class="bg-white input-tel" name="leave-number">
+                        </div>
+                        <button type="submit" class="btn btn-send text-white">Отправить</button>
                     </div>
                 </form>
                 <p class="text-center">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a href="" class="texdecoration-line">политикой обработки персональных данных.</a></p>
@@ -577,15 +573,17 @@
                     <div class="container d-flex">
                         <div class="wrapper-form m-auto d-flex flex-column" id="application">
                             <span class="wrapper-form-title">запишись на обучение СПА-Массажа со скидкой</span>
-                            <form class="d-flex flex-column" id='form'>
-                                <div class="form-send form-name d-flex align-items-center">
+                            <form action="php/mail.php" method="POST"  class="d-flex flex-column" id='form'>
+                                <div class="form-send form-name d-flex align-items-center justify-content-center">
                                     <input type="text" class="margin-input" name="name" placeholder="Имя">
                                     <input type="text" name="second_name"  placeholder="Фамилия">
                                 </div>
                                 <div class="form-send d-flex align-items-center m-auto">
-                                    <input type="number" class="input-number" disabled placeholder="+38">
-                                    <input type="tel" class="bg-white input-tel" name="phone">
-                                    <button href="#leave-number" type="submit" class="btn btn-send text-white">Отправить</button>
+                                    <div class="d-flex media-form">
+                                        <input type="number" class="input-number" disabled placeholder="+38">
+                                        <input type="tel" class="bg-white input-tel" name="phone">
+                                    </div>
+                                    <button type="submit" class="btn btn-send text-white">Отправить</button>
                                 </div>
                             </form>
                             <p class="text-center">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a href="" class="texdecoration-line">политикой обработки персональных данных.</a></p>
@@ -596,21 +594,30 @@
             </div>
         </section>
         <!-- APPLICATION END -->
+        <!-- CONTACT -->
+        <section class="map" id="contact">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d687.0706517760616!2d30.705680165701697!3d46.46290992727946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c63224b2f5045f%3A0x3187b410276df6f!2sCTM+SPA+School!5e0!3m2!1sru!2sua!4v1516227387768" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </section>
+        <!-- MAP END -->
     </main>
     <!-- MAIN END -->
     <!-- FOOTER START -->
     <footer class="footer">
         <div class="container d-flex justify-content-around align-items-center">
-            <nav class="social-nav">
+            <ul class="nav-header d-flex align-items-center m-auto  flex-nowrap">
+                <li class="active"><a href="#course-price">ГЛАВНАЯ</a></li>
+                <li><a href="#price-catalog">ЦЕНЫ</a></li>
+                <li><a href="#why-choose-us">ПРЕИМУЩЕСТВА</a></li>
+                <li><a href="#feedback">ОТЗЫВЫ</a></li>
+                <li><a href="#application">ОСТАВИТЬ ЗАЯВКУ </a></li>
+                <li><a href="#contact">КОНТАКТЫ</a></li>
+            </ul>
+            <nav class="social-nav d-flex ">
                 <a href="https://www.facebook.com/ctmspaschool" class="fa fa-facebook"></a>
                 <a href="https://twitter.com/ctm_spa" class="fa fa-twitter"></a>
                 <a href="https://plus.google.com/117047848178941929094" class="fa fa-google-plus"></a>
+                <a href="https://vk.com/kursy_spa_massazha" class="fa fa-vk"></a>
             </nav>
-            <div class="copyright">
-                <i class="fa fa-copyright"></i>
-                <span>2016-2018 SPA-school.</span>
-                <span>Все права защищены.</span>
-            </div>
         </div>
     </footer>
     <!-- FOOTER END -->
@@ -620,7 +627,10 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="SlickNav/slicknav.css" />
+    <script src="js/jquery.slicknav.min.js"></script>
 
+    
     <script src="js/main.js"></script>
   </body>
 </html>

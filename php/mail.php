@@ -1,14 +1,16 @@
-<?php
+    <?php
 
-$recepient = "novgorodskiji@gmail.com";
-$siteName = "SPA School";
+    $post = $_POST;
 
-$name = trim($_POST["name"]);
-$phone = trim($_POST["phone"]);
-$second_name = trim($_POST["name"]);
-$message = "Имя: $name "Фамилия: $second_name \nТелефон: $phone";
+    $to = "macpirog@gmail.com";
 
-$pagetitle = "Заявка с сайта \"$siteName\"";
-mail($recepient, $pagetitle, $message, "Content-type: text/plain; charset=\"utf-8\"\n From: $recepient");
+    $headers = "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=utf-8\r\n";
 
-?>
+    if ($post) {
+        $subject = 'Заголовок письма';
+        $message = $post['phone']."<br>".
+                    $post['name']."<br>".
+                    $post['second_name'];
+        mail($to, $subject, $message, $headers);
+    };
